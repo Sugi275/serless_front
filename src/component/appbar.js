@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux"
+import { push } from 'connected-react-router'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,6 +17,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
+import store from '../configureStore';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -103,6 +106,14 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const moveToTop = () => {
+    store.dispatch(push('/'));
+  };
+
+  const moveToImageUpload = () => {
+    store.dispatch(push('/imageupload'));
+  };
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -131,12 +142,12 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="image upload" color="inherit" onClick={() => {location.href = "./imageupload";}}>
+        <IconButton aria-label="image upload" color="inherit" onClick={() => {moveToImageUpload()}}>
           <Badge badgeContent={0} color="secondary">
             <AddAPhotoIcon />
           </Badge>
         </IconButton>
-        <p onClick={() => {location.href = "./imageupload";}}>Image Upload</p>
+        <p onClick={() => {moveToImageUpload()}}>Image Upload</p>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
@@ -180,7 +191,7 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap onClick={() => {location.href = "./";}}>
+          <Typography className={classes.title} variant="h6" noWrap onClick={() => {moveToTop()}}>
             Serless!
           </Typography>
           <div className={classes.search}>
@@ -198,7 +209,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="image upload" color="inherit" onClick={() => {location.href = "./imageupload";}}>
+            <IconButton aria-label="image upload" color="inherit" onClick={() => {moveToImageUpload()}}>
               <Badge badgeContent={0} color="secondary">
                 <AddAPhotoIcon />
               </Badge>

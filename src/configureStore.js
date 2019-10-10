@@ -5,7 +5,7 @@ import createRootReducer from './reducers'
 
 export const history = createBrowserHistory()
 
-export default function configureStore(preloadedState) {
+function configureStore(preloadedState) {
   const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
   const store = createStore(
     createRootReducer(history),
@@ -27,3 +27,7 @@ export default function configureStore(preloadedState) {
 
   return store
 }
+
+const store = configureStore();
+
+export default store;
