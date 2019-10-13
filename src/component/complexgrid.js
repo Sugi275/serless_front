@@ -1,84 +1,34 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import { Button } from '@material-ui/core';
 import { reloadImage } from '../actions/reloadImage';
+import { Button } from '@material-ui/core';
 import store from '../store/configureStore';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    margin: 'auto',
-    maxWidth: 500,
-  },
-  image: {
-    width: 128,
-    height: 128,
-  },
-  img: {
-    margin: 'auto',
-    display: 'block',
-    maxWidth: '100%',
-    maxHeight: '100%',
-  },
-}));
-
 export default class ComplexGrid extends React.Component {
+  reloadImages() {
+    const images = [
+      { id: 1, imagename: "sample1.img", imageurl: "https://objectstorage.ap-tokyo-1.oraclecloud.com/n/orasejapan/b/serverless_movie/o/sample1.jpg" },
+      { id: 2, imagename: "sample2.img", imageurl: "https://objectstorage.ap-tokyo-1.oraclecloud.com/n/orasejapan/b/serverless_movie/o/sample2.jpg" },
+    ];
+
+    store.dispatch(reloadImage(images));
+  };
+
   render() {
-    const classes = useStyles();
-
-    const debugging = () => {
-      const images = [
-        { id: 1, name: "Ichiro", language: "python" },
-        { id: 2, name: "Jiro", language: "ruby" },
-        { id: 3, name: "Saburo", language: "java" },
-        { id: 4, name: "Shiro", language: "python" }
-      ];
-
-      store.dispatch(reloadImage(images))
-      console.log(store.getState())
-    };
+    var images
+    images = store.getState().imageList.images
 
     return (
-      <div className={classes.root}>
-        <Paper className={classes.paper}>
-          <Grid container spacing={2}>
-            <Grid item>
-              <ButtonBase className={classes.image}>
-                <img className={classes.img} alt="complex" src="https://i.imagesup.co/images2/0__05c7e898ac694e.jpg" />
-              </ButtonBase>
-            </Grid>
-            <Grid item xs={12} sm container>
-              <Grid item xs container direction="column" spacing={2}>
-                <Grid item xs>
-                  <Typography gutterBottom variant="subtitle1">
-                    Standard license
-                </Typography>
-                  <Typography variant="body2" gutterBottom>
-                    Full resolution 1920x1080 • JPEG
-                </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    ID: 1030114
-                </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                    Remove
-                </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Paper>
-        <Button onClick={() => { debugging() }}>
-          test
-      </Button>
+      <div>
+        <Button onClick={() => { this.reloadImages() }}>
+          ReloadImages
+        </Button>
+        {
+          images.map(function (item, i) {
+            return (
+              <div>{item.imageurl}</div>
+            );
+          })
+        }
       </div>
     )
   }

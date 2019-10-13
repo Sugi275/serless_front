@@ -1,6 +1,6 @@
 const initialState = {
     images: [
-        { id: 0, name: "initial", language: "python" }
+        { id: 0, imagename: "initial", imageurl: "https://initial" }
     ]
 };
 

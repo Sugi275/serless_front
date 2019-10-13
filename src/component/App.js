@@ -12,24 +12,12 @@ class App extends React.Component {
         <AppBar />
         <Switch>
           <Route exact path="/" component={ComplexGrid} />
-          <Route exact path="/imageupload" component={ImageUpload} />
+          <Route exact path="/imageupload" component={ImageUpload} />} />
         </Switch>
       </React.Fragment>
     )
   }
 }
-
-// const App = () => {
-//   return (
-//     <React.Fragment>
-//       <AppBar />
-//       <Switch>
-//         <Route exact path="/" component={ComplexGrid} />
-//         <Route exact path="/imageupload" component={ImageUpload} />
-//       </Switch>
-//     </React.Fragment>
-//   )
-// }
 
 App.propTypes = {
   history: PropTypes.object,
