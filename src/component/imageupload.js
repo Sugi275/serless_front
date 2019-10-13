@@ -1,9 +1,9 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 import Dropzone from 'react-dropzone';
 import GetPreAuthURI from '../oraclecloud/getpreauthuri';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 export default class ImageUpload extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class ImageUpload extends React.Component {
   async handleOnDrop(files) {
     console.log(files)
     const preAuthURI = await GetPreAuthURI()
-    this.setState ({
+    this.setState({
       isUploading: true,
       preAuthURI: preAuthURI,
     })
@@ -40,27 +40,27 @@ export default class ImageUpload extends React.Component {
       }
     };
     axios.put(this.state.preAuthURI + file.name, file, options)
-    .then(result => {
-      console.log("Response from object storage");
-    })
-    .catch(error => {
-      alert("ERROR " + JSON.stringify(error));
-    })
+      .then(result => {
+        console.log("Response from object storage");
+      })
+      .catch(error => {
+        alert("ERROR " + JSON.stringify(error));
+      })
   }
 
   render() {
     return (
-      <div style={{width: 960, margin: '20px auto'}}>
+      <div style={{ width: 960, margin: '20px auto' }}>
         <h1>Image Upload</h1>
         <Dropzone onDrop={acceptedFiles => this.handleOnDrop(acceptedFiles)}>
-           {({getRootProps, getInputProps}) => (
+          {({ getRootProps, getInputProps }) => (
             <section>
-               <div {...getRootProps()}>
-                 <input {...getInputProps()} />
-                 <p>Drag 'n' drop some files here, or click to select files</p>
-               </div>
-             </section>
-           )}
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <p>Drag 'n' drop some files here, or click to select files</p>
+              </div>
+            </section>
+          )}
         </Dropzone>
       </div>
     );

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
-import imageListReducer from './imagelistreducer'
+import imagesReducer from './imagesreducer'
 
 const rootReducer = (history) => combineReducers({
-  router: connectRouter(history),
-  imageList: imageListReducer
+  imageList: imagesReducer,
+  router: connectRouter(history)
 })
 
 export default rootReducer

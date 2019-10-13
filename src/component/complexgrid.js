@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import { Button } from '@material-ui/core';
+import { reloadImage } from '../actions/reloadImage';
+import store from '../store/configureStore';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,6 +31,18 @@ const useStyles = makeStyles(theme => ({
 
 export default function ComplexGrid() {
   const classes = useStyles();
+
+  const debugging = () => {
+    const images = [
+      { id: 1, name: "Ichiro", language: "python" },
+      { id: 2, name: "Jiro", language: "ruby" },
+      { id: 3, name: "Saburo", language: "java" },
+      { id: 4, name: "Shiro", language: "python" }
+    ];
+
+    store.dispatch(reloadImage(images))
+    console.log(store.getState())
+  };
 
   return (
     <div className={classes.root}>
@@ -61,7 +75,7 @@ export default function ComplexGrid() {
           </Grid>
         </Grid>
       </Paper>
-      <Button>
+      <Button onClick={() => { debugging() }}>
         test
       </Button>
     </div>
