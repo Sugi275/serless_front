@@ -1,6 +1,6 @@
 const initialState = {
     images: [
-        { id: 0, imagename: "initial", imageurl: "https://initial" }
+        { id: 0, imagename: "initial", image_url: "https://initial" }
     ]
 };
 
