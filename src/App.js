@@ -1,12 +1,21 @@
 import React from 'react'
+import { Route, Switch } from 'react-router'
+import AppBar from './component/appbar'
+import ComplexGrid from './component/complexgrid'
+import ImageUpload from './component/imageupload'
 import PropTypes from 'prop-types'
 import { ConnectedRouter } from 'connected-react-router'
-import routes from './routes'
 
 const App = ({ history }) => {
   return (
     <ConnectedRouter history={history}>
-      { routes }
+      <div>
+        <AppBar />
+        <Switch>
+          <Route exact path="/" component={ComplexGrid} />
+          <Route exact path="/imageupload" component={ImageUpload} />
+        </Switch>
+      </div>
     </ConnectedRouter>
   )
 }
