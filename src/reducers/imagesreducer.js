@@ -5,16 +5,12 @@ const initialState = {
 };
 
 const imagesReducer = (state = initialState, action) => {
-    console.log("test")
-    console.log(action)
-    switch (action.Type) {
-        case 'RELOAD_IMAGE':
-            return {
-                ...state,
-                images: action.payload.images
-            };
-        default:
-            return state;
+    if (action.type === 'RELOAD_IMAGE') {
+        return {
+            images: action.payload.images
+        };
+    } else {
+        return state;
     }
 }
 
