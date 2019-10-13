@@ -1,5 +1,6 @@
 import { AppContainer } from 'react-hot-loader'
 import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './containers/App';
@@ -10,7 +11,9 @@ const render = () => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <App history={history} />
+        <ConnectedRouter history={history}>
+          <App />
+        </ConnectedRouter>
       </Provider>
     </AppContainer>,
     document.getElementById('root')
