@@ -16,6 +16,7 @@ export default class ImageUpload extends React.Component {
   }
 
   async handleOnDrop(files) {
+    console.log("start handleOnDrop")
     console.log(files)
     const preAuthURI = await GetPreAuthURI()
     this.setState({
@@ -31,6 +32,8 @@ export default class ImageUpload extends React.Component {
           images: this.state.images.concat(images)
         });
       }).catch(e => console.log(e));
+
+    console.log("end handleOnDrop")
   }
 
   uploadImage(file) {

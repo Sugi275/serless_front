@@ -20,6 +20,7 @@ export default class ComplexGrid extends React.Component {
     const images = jsonImageMetadata.data
 
     store.dispatch(reloadImage(images));
+    console.log("end handleReloadImages")
   }
 
   render() {
