@@ -9,13 +9,13 @@ import { ConnectedRouter } from 'connected-react-router'
 const App = ({ history }) => {
   return (
     <ConnectedRouter history={history}>
-      <div>
+      <React.Fragment>
         <AppBar />
         <Switch>
           <Route exact path="/" component={ComplexGrid} />
           <Route exact path="/imageupload" component={ImageUpload} />
         </Switch>
-      </div>
+      </React.Fragment>
     </ConnectedRouter>
   )
 }
