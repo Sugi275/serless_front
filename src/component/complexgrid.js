@@ -17,18 +17,19 @@ export default class ComplexGrid extends React.Component {
     var images
     images = store.getState().imageList.images
 
+    var list = [];
+    for (var i in images) {
+      list.push(<li key={images[i].id}>{images[i].imageurl}</li>);
+    }
+
     return (
       <div>
         <Button onClick={() => { this.reloadImages() }}>
           ReloadImages
         </Button>
-        {
-          images.map(function (item, i) {
-            return (
-              <div>{item.imageurl}</div>
-            );
-          })
-        }
+        <ul>
+          {list}
+        </ul>
       </div>
     )
   }
