@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router'
 import AppBar from './component/appbar'
 import ComplexGrid from './component/complexgrid'
@@ -24,4 +25,13 @@ App.propTypes = {
   history: PropTypes.object,
 }
 
-export default App
+function mapStateToProps(state) {
+  return state
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

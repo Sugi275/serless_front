@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from "react-redux"
 import { push } from 'connected-react-router'
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -142,12 +141,12 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="image upload" color="inherit" onClick={() => {moveToImageUpload()}}>
+        <IconButton aria-label="image upload" color="inherit" onClick={() => { moveToImageUpload() }}>
           <Badge badgeContent={0} color="secondary">
             <AddAPhotoIcon />
           </Badge>
         </IconButton>
-        <p onClick={() => {moveToImageUpload()}}>Image Upload</p>
+        <p onClick={() => { moveToImageUpload() }}>Image Upload</p>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
@@ -191,7 +190,7 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap onClick={() => {moveToTop()}}>
+          <Typography className={classes.title} variant="h6" noWrap onClick={() => { moveToTop() }}>
             Serless!
           </Typography>
           <div className={classes.search}>
@@ -209,7 +208,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="image upload" color="inherit" onClick={() => {moveToImageUpload()}}>
+            <IconButton aria-label="image upload" color="inherit" onClick={() => { moveToImageUpload() }}>
               <Badge badgeContent={0} color="secondary">
                 <AddAPhotoIcon />
               </Badge>
