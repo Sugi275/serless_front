@@ -29,55 +29,57 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ComplexGrid() {
-  const classes = useStyles();
+export default class ComplexGrid extends React.Component {
+  render() {
+    const classes = useStyles();
 
-  const debugging = () => {
-    const images = [
-      { id: 1, name: "Ichiro", language: "python" },
-      { id: 2, name: "Jiro", language: "ruby" },
-      { id: 3, name: "Saburo", language: "java" },
-      { id: 4, name: "Shiro", language: "python" }
-    ];
+    const debugging = () => {
+      const images = [
+        { id: 1, name: "Ichiro", language: "python" },
+        { id: 2, name: "Jiro", language: "ruby" },
+        { id: 3, name: "Saburo", language: "java" },
+        { id: 4, name: "Shiro", language: "python" }
+      ];
 
-    store.dispatch(reloadImage(images))
-    console.log(store.getState())
-  };
+      store.dispatch(reloadImage(images))
+      console.log(store.getState())
+    };
 
-  return (
-    <div className={classes.root}>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src="https://i.imagesup.co/images2/0__05c7e898ac694e.jpg" />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs>
-                <Typography gutterBottom variant="subtitle1">
-                  Standard license
+    return (
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <Grid container spacing={2}>
+            <Grid item>
+              <ButtonBase className={classes.image}>
+                <img className={classes.img} alt="complex" src="https://i.imagesup.co/images2/0__05c7e898ac694e.jpg" />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm container>
+              <Grid item xs container direction="column" spacing={2}>
+                <Grid item xs>
+                  <Typography gutterBottom variant="subtitle1">
+                    Standard license
                 </Typography>
-                <Typography variant="body2" gutterBottom>
-                  Full resolution 1920x1080 • JPEG
+                  <Typography variant="body2" gutterBottom>
+                    Full resolution 1920x1080 • JPEG
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  ID: 1030114
+                  <Typography variant="body2" color="textSecondary">
+                    ID: 1030114
                 </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  Remove
+                </Grid>
+                <Grid item>
+                  <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                    Remove
                 </Typography>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </Paper>
-      <Button onClick={() => { debugging() }}>
-        test
+        </Paper>
+        <Button onClick={() => { debugging() }}>
+          test
       </Button>
-    </div>
-  );
+      </div>
+    )
+  }
 }
