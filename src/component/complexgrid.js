@@ -3,6 +3,7 @@ import { reloadImage } from '../actions/reloadImage';
 import { Button } from '@material-ui/core';
 import store from '../store/configureStore';
 import GetImageMetadata from '../oraclecloud/getImageMetadata';
+import ImageCard from './ImageCard'
 
 export default class ComplexGrid extends React.Component {
   debugReloadImages() {
@@ -29,7 +30,7 @@ export default class ComplexGrid extends React.Component {
 
     var list = [];
     for (var i in images) {
-      list.push(<li key={images[i].id}>{images[i].image_url}</li>);
+      list.push(<ImageCard key={images[i].id} image={images[i]}></ImageCard>);
     }
 
     return (
@@ -37,9 +38,7 @@ export default class ComplexGrid extends React.Component {
         <Button onClick={() => { this.handleReloadImages() }}>
           ReloadImages
         </Button>
-        <ul>
-          {list}
-        </ul>
+        {list}
       </div>
     )
   }
