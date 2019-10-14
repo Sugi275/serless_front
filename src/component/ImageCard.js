@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ImageZoom from 'react-medium-image-zoom'
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -66,10 +67,11 @@ export default function RecipeReviewCard(props) {
                 title={props.image.imagename}
                 subheader="September 14, 2016"
             />
-            <CardMedia
-                className={classes.media}
-                image={props.image.image_url}
-                title="Paella dish"
+            <ImageZoom
+                image={{
+                    src: props.image.image_url,
+                    style: { width: '20em' }
+                }}
             />
             <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
