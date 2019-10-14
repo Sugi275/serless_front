@@ -70,7 +70,8 @@ export default function RecipeReviewCard(props) {
             <ImageZoom
                 image={{
                     src: props.image.image_url,
-                    style: { width: '20em' }
+                    style: { width: '20em' },
+                    shouldReplaceImage: false,
                 }}
             />
             <CardActions disableSpacing>
