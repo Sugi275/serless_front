@@ -9,12 +9,17 @@ export default class ImageUpload extends React.Component {
   async handleOnDrop(files) {
     console.log("start handleOnDrop")
 
-    store.dispatch(previewImage(files));
+    files.map(file => Object.assign(file, {
+      preview: URL.createObjectURL(file)
+    }))
+
+    store.dispatch(previewImage(files))
     const preAuthURI = await GetPreAuthURI()
     store.dispatch(addPreAuthURI(preAuthURI))
     files.map(file => this.uploadImage(file))
 
     console.log("end handleOnDrop")
+    console.log(store.getState().imagePreview.images)
   }
 
   // async handleOnDrop(files) {
