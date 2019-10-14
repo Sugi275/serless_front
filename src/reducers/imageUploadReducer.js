@@ -16,9 +16,7 @@ const imageUploadReducer = (state = initialState, action) => {
             preAuthURI: action.payload.preAuthURI
         };
     } else if (action.type === 'PREVIEW_CLEAR') {
-        return {
-            images: initialState
-        };
+        return initialState;
     } else {
         return state;
     }

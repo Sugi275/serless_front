@@ -3,6 +3,7 @@ import GetPreAuthURI from '../oraclecloud/getpreauthuri';
 import axios from 'axios';
 import Dropzone from './DropZone';
 import store from '../store/configureStore';
+import UploadButton from './UploadButton';
 import { previewImage, addPreAuthURI, previewClear } from '../actions/uploadImage';
 
 export default class ImageUpload extends React.Component {
@@ -14,9 +15,6 @@ export default class ImageUpload extends React.Component {
     }))
 
     store.dispatch(previewImage(files))
-    const preAuthURI = await GetPreAuthURI()
-    store.dispatch(addPreAuthURI(preAuthURI))
-    files.map(file => this.uploadImage(file))
 
     console.log("end handleOnDrop")
     console.log(store.getState().imagePreview.images)
@@ -44,6 +42,17 @@ export default class ImageUpload extends React.Component {
   //   console.log("end handleOnDrop")
   // }
 
+
+  async handleUploadImage() {
+    console.log("start handleUploadImage")
+    const preAuthURI = await GetPreAuthURI()
+    store.dispatch(addPreAuthURI(preAuthURI))
+
+    const files = store.getState().imagePreview.images
+    files.map(file => this.uploadImage(file))
+    console.log("end handleUploadImage")
+  }
+
   uploadImage(file) {
     var options = {
       headers: {
@@ -54,6 +63,9 @@ export default class ImageUpload extends React.Component {
       .then(result => {
         console.log("Response from object storage");
       })
+      .then(() => {
+        store.dispatch(previewClear())
+      })
       .catch(error => {
         alert("ERROR " + JSON.stringify(error));
       })
@@ -63,6 +75,7 @@ export default class ImageUpload extends React.Component {
     return (
       <div>
         <Dropzone handleOnDropFunc={(files) => this.handleOnDrop(files)} />
+        <UploadButton handleUploadImageFunc={() => this.handleUploadImage()} />
       </div>
     );
 
