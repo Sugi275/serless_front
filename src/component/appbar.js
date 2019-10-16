@@ -16,6 +16,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
+import HomeIcon from '@material-ui/icons/Home';
 import store from '../store/configureStore';
 
 const useStyles = makeStyles(theme => ({
@@ -141,6 +142,14 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+        <IconButton aria-label="home" color="inherit" onClick={() => { moveToTop() }}>
+          <Badge color="secondary">
+            <HomeIcon />
+          </Badge>
+        </IconButton>
+        <p onClick={() => { moveToTop() }}>Home</p>
+      </MenuItem>
+      <MenuItem>
         <IconButton aria-label="image upload" color="inherit" onClick={() => { moveToImageUpload() }}>
           <Badge badgeContent={0} color="secondary">
             <AddAPhotoIcon />
@@ -182,14 +191,6 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography className={classes.title} variant="h6" noWrap onClick={() => { moveToTop() }}>
             Serless!
           </Typography>
@@ -208,6 +209,11 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <IconButton aria-label="home" color="inherit" onClick={() => { moveToTop() }}>
+              <Badge color="secondary">
+                <HomeIcon />
+              </Badge>
+            </IconButton>
             <IconButton aria-label="image upload" color="inherit" onClick={() => { moveToImageUpload() }}>
               <Badge badgeContent={0} color="secondary">
                 <AddAPhotoIcon />
