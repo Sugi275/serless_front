@@ -53,14 +53,14 @@ export default function CircularIntegration(props) {
         };
     }, []);
 
-    const handleButtonClick = () => {
+    const handleButtonClick = async () => {
         if (!loading) {
 
 
             setSuccess(false);
             setLoading(true);
 
-            props.handleUploadImageFunc();
+            await props.handleUploadImageFunc();
 
             setSuccess(true);
             setLoading(false);
