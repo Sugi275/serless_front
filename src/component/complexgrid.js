@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import store from '../store/configureStore';
 import GetImageMetadata from '../oraclecloud/getImageMetadata';
 import ImageCard from './ImageCard'
+import ReloadImageButton from './ReloadImageButton';
 import './complexgrid.css'
 
 export default class ComplexGrid extends React.Component {
@@ -36,9 +37,7 @@ export default class ComplexGrid extends React.Component {
 
     return (
       <React.Fragment>
-        <Button onClick={() => { this.handleReloadImages() }}>
-          ReloadImages
-        </Button>
+        <ReloadImageButton handleReloadImageImageFunc={() => this.handleReloadImages()} />
         <div className="flex">
           {list}
         </div>
