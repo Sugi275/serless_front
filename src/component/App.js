@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router'
 import AppBar from './appbar'
 import ComplexGrid from './complexgrid'
 import ImageUpload from './imageupload'
+import Authorized1 from './Authorized1'
 import PropTypes from 'prop-types'
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={ComplexGrid} />
           <Route exact path="/imageupload" component={ImageUpload} />} />
+          <Route exact path="/authorized1" component={Authorized1} />} />
         </Switch>
       </React.Fragment>
     )
