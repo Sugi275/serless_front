@@ -13,10 +13,10 @@ import Authenticate from 'react-openidconnect';
 const OidcSettings = {
     authority: 'https://idcs-862b2a8f4c42423b982ab5826c882693.identity.oraclecloud.com/',
     client_id: 'e6b74aa176e24c5894e6530348e0ac57',
-    redirect_uri: 'https://demo.sugimount.tokyo/',
+    redirect_uri: 'https://demo.sugimount.tokyo/authorized1',
     response_type: 'id_token token',
     scope: 'openid profile roles',
-    post_logout_redirect_uri: 'https://demo.sugimount.tokyo/'
+    post_logout_redirect_uri: 'https://demo.sugimount.tokyo/authorized1'
 };
 
 
