@@ -1,12 +1,12 @@
 import React from 'react';
 import cookie from 'react-cookies';
-import uuid from 'react-uuid'
+import { v4 as uuidv4 } from 'uuid';
 
 export default class Login extends React.Component {
     constructor(props) {
         super(props);
 
-        cookie.save('loginState', uuid(), { path: '/' })
+        cookie.save('loginState', uuidv4(), { path: '/' })
     }
 
     render() {
