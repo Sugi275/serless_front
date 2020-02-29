@@ -1,6 +1,6 @@
 const initialState = {
     images: [
-        { id: 0, imagename: "initial", image_url: "https://ascii.jp/elem/000/001/688/1688136/180605_FnProject_32_500x250_500x250.jpg" }
+        { id: 0, imagename: "initial", image_url: "https://objectstorage.ap-tokyo-1.oraclecloud.com/n/orasejapan/b/serverless_movie/o/89783130b95d3802.jpg" }
     ]
 };
 

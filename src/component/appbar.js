@@ -7,9 +7,9 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
+import HttpsIcon from '@material-ui/icons/Https';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
@@ -114,6 +114,15 @@ export default function PrimarySearchAppBar() {
     store.dispatch(push('/imageupload'));
   };
 
+  const moveToAuthorized1 = () => {
+    store.dispatch(push('/authorized1'));
+  };
+
+  const moveToLogin = () => {
+    store.dispatch(push('login'));
+    handleMenuClose();
+  };
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -126,7 +135,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={moveToLogin}>Login</MenuItem>
     </Menu>
   );
 
@@ -217,6 +226,11 @@ export default function PrimarySearchAppBar() {
             <IconButton aria-label="image upload" color="inherit" onClick={() => { moveToImageUpload() }}>
               <Badge badgeContent={0} color="secondary">
                 <AddAPhotoIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="image upload" color="inherit" onClick={() => { moveToAuthorized1() }}>
+              <Badge badgeContent={0} color="secondary">
+                <HttpsIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 4 new mails" color="inherit">

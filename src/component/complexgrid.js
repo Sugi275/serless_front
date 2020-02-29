@@ -1,6 +1,5 @@
 import React from 'react';
 import { reloadImage } from '../actions/reloadImage';
-import { Button } from '@material-ui/core';
 import store from '../store/configureStore';
 import GetImageMetadata from '../oraclecloud/getImageMetadata';
 import ImageCard from './ImageCard'

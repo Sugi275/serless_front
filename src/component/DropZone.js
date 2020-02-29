@@ -92,6 +92,7 @@ export default function StyledDropzone(props) {
                 <img
                     src={file.preview}
                     style={imgstyle}
+                    alt=""
                 />
             </div>
         </div>
